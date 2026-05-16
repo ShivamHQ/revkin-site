@@ -7,55 +7,114 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0a0a0a; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; }
-    header { background: #0f1117; padding: 24px 40px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #1e293b; }
+
+    header { background: #0f1117; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b; }
+    .header-left { display: flex; align-items: center; gap: 16px; }
     header h1 { font-size: 1.6em; letter-spacing: 4px; color: #06b6d4; }
     header span { color: #64748b; font-size: 0.9em; letter-spacing: 1px; }
+    .version-tag { background: #0f2a1a; border: 1px solid #22c55e; color: #22c55e; font-size: 0.75em; font-weight: 700; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; }
+
     .hero { text-align: center; padding: 80px 20px 60px; }
-    .hero h2 { font-size: 2.4em; letter-spacing: 2px; margin-bottom: 16px; }
-    .hero p { color: #94a3b8; font-size: 1.1em; max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
-    .badge { display: inline-block; background: #06b6d4; color: #000; font-weight: 700; letter-spacing: 2px; padding: 14px 36px; border-radius: 8px; font-size: 1em; text-decoration: none; }
-    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 60px 40px; max-width: 960px; margin: 0 auto; }
-    .card { background: #0f1117; border: 1px solid #1e293b; border-radius: 12px; padding: 28px 24px; width: 260px; }
-    .card h3 { color: #06b6d4; font-size: 1em; letter-spacing: 2px; margin-bottom: 10px; }
-    .card p { color: #94a3b8; font-size: 0.92em; line-height: 1.6; }
+    .hero h2 { font-size: 2.6em; letter-spacing: 3px; margin-bottom: 16px; }
+    .hero p { color: #94a3b8; font-size: 1.1em; max-width: 540px; margin: 0 auto 40px; line-height: 1.8; }
+    .hero-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .badge-primary { display: inline-block; background: #06b6d4; color: #000; font-weight: 700; letter-spacing: 2px; padding: 14px 36px; border-radius: 8px; font-size: 1em; text-decoration: none; }
+    .badge-secondary { display: inline-block; background: transparent; border: 1px solid #06b6d4; color: #06b6d4; font-weight: 700; letter-spacing: 2px; padding: 14px 36px; border-radius: 8px; font-size: 1em; text-decoration: none; }
+
+    .status-bar { background: #0f2a1a; border-top: 1px solid #14532d; border-bottom: 1px solid #14532d; padding: 12px 40px; text-align: center; }
+    .status-bar p { color: #22c55e; font-size: 0.85em; letter-spacing: 2px; font-weight: 700; }
+    .status-bar span { color: #86efac; font-weight: 400; letter-spacing: 0; margin-left: 8px; }
+
+    .section-label { text-align: center; padding: 60px 20px 0; color: #334155; font-size: 0.75em; letter-spacing: 4px; font-weight: 700; }
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 28px 40px 60px; max-width: 1040px; margin: 0 auto; }
+    .card { background: #0f1117; border: 1px solid #1e293b; border-radius: 12px; padding: 28px 24px; width: 240px; }
+    .card-accent { border-color: #06b6d433; }
+    .card h3 { color: #06b6d4; font-size: 0.9em; letter-spacing: 2px; margin-bottom: 10px; }
+    .card p { color: #94a3b8; font-size: 0.88em; line-height: 1.65; }
+    .card .icon { font-size: 1.4em; margin-bottom: 12px; }
+
+    .divider { border: none; border-top: 1px solid #1e293b; margin: 0 40px; }
+
     footer { text-align: center; padding: 40px 20px; color: #334155; font-size: 0.85em; border-top: 1px solid #1e293b; }
     footer a { color: #06b6d4; text-decoration: none; }
+    footer p + p { margin-top: 8px; }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>REVKIN</h1>
-    <span>TACTICAL RIDING COMPANION</span>
+    <div class="header-left">
+      <h1>REVKIN</h1>
+      <span>TACTICAL RIDING COMPANION</span>
+    </div>
+    <div class="version-tag">v1.5.7 BETA</div>
   </header>
 
+  <div class="status-bar">
+    <p>NOW IN EARLY ACCESS <span>· Available to internal testers on Google Play · Android</span></p>
+  </div>
+
   <section class="hero">
-    <h2>RIDE SMARTER</h2>
-    <p>Navigation, live telemetry, and group rides — built for motorcyclists who demand more than a basic maps app.</p>
-    <a class="badge" href="#">COMING SOON ON GOOGLE PLAY</a>
+    <h2>RIDE WITH YOUR BROTHERS</h2>
+    <p>The tactical riding companion built for pack riders. Live group tracking, turn-by-turn navigation, crash detection, and a HUD designed to be read at speed — with one hand, wearing gloves.</p>
+    <div class="hero-badges">
+      <a class="badge-primary" href="#">JOIN BETA ON GOOGLE PLAY</a>
+      <a class="badge-secondary" href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">PRIVACY POLICY</a>
+    </div>
   </section>
+
+  <p class="section-label">WHAT'S INSIDE</p>
 
   <section class="features">
-    <div class="card">
+    <div class="card card-accent">
+      <div class="icon">🗺️</div>
       <h3>NAVIGATION</h3>
-      <p>Turn-by-turn directions with live route tracking. Plan single-day or multi-day rides with custom waypoints.</p>
+      <p>Turn-by-turn routing via REVKIN's in-app HUD or hand off to Google Maps — your choice every time. Cyan polyline, next-waypoint banner, distance + ETA always visible.</p>
     </div>
-    <div class="card">
+    <div class="card card-accent">
+      <div class="icon">📡</div>
       <h3>TELEMETRY HUD</h3>
-      <p>Real-time speed, heading, altitude, and odometer. Minimal display designed for glanceability at speed.</p>
+      <p>Live speed, heading, altitude, and odometer. Minimal glanceable display — designed to be read at highway speed without taking your eyes off the road.</p>
     </div>
-    <div class="card">
+    <div class="card card-accent">
+      <div class="icon">🏍️</div>
       <h3>GROUP RIDES</h3>
-      <p>Create or join a ride lobby. See all riders on a live map. SOS alert broadcasts your location instantly.</p>
+      <p>Host or join a ride with a shareable code. See every rider as a live dot on the map. Host controls the pace — transfer lead or end the ride for everyone from inside the app.</p>
+    </div>
+    <div class="card card-accent">
+      <div class="icon">🗓️</div>
+      <h3>RIDE PLANNER</h3>
+      <p>Plan single-day or multi-day rides with custom waypoints. Route preview shows your stops before you leave. Search biased to the area you're looking at — no wrong-city pins.</p>
     </div>
     <div class="card">
+      <div class="icon">🆘</div>
+      <h3>SAFETY SUITE</h3>
+      <p>Crash detection, Dead Man's alert timer, one-tap SOS that broadcasts your GPS to all ride members. Voice commands for hands-free control. Weather alerts en route.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧤</div>
+      <h3>GLOVE-COMS</h3>
+      <p>Large-tile communication overlay for gloved hands. Send STOP, FUEL, FOOD, PHOTO, and custom signals to your pack without stopping or unlocking your phone.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📁</div>
       <h3>RIDE HISTORY</h3>
-      <p>Every ride is logged automatically. Review distance, duration, and route after each session.</p>
+      <p>Every ride auto-logged. Review distance, duration, and route in the garage. Tag photos to waypoints, mark hazards, and replay routes from past trips.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔑</div>
+      <h3>ZERO FRICTION AUTH</h3>
+      <p>Sign in with your phone number — no email, no password, no account setup friction. OTP in seconds. Your profile, garage, and ride history follow you across devices.</p>
     </div>
   </section>
 
+  <hr class="divider" />
+
   <footer>
-    <p>Built by riders, for riders. &nbsp;|&nbsp; <a href="https://gist.githubusercontent.com/mishu81/750f48e5117f3049ac3b1cd831c05392/raw/3cca6117967cf5ded0cbc749504b53803a6cb17f/revkin-privacy-policy.html">Privacy Policy</a></p>
-    <p style="margin-top:8px;">Contact: kumarshivam1993@gmail.com</p>
+    <p>Built by riders, for riders. &nbsp;|&nbsp; <a href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">Privacy Policy</a></p>
+    <p>Contact: <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a></p>
+    <p style="margin-top:16px; color:#1e293b;">REVKIN v1.5.7 · Android Beta · © 2026</p>
   </footer>
+
 </body>
 </html>
