@@ -1,114 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REVKIN Privacy Policy</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.7; }
-    h1 { font-size: 1.8em; } h2 { font-size: 1.2em; margin-top: 2em; }
-    p, li { font-size: 1em; } ul { padding-left: 1.4em; }
-    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.95em; }
-    th { background: #f5f5f5; text-align: left; padding: 8px 10px; border: 1px solid #ddd; }
-    td { padding: 8px 10px; border: 1px solid #ddd; vertical-align: top; }
-    a { color: #0066cc; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>REVKIN • Privacy Policy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#090909;
+  --card:#141414;
+  --card2:#1a1a1a;
+  --border:#1e1e1e;
+  --text:#f5f5f5;
+  --muted:#aaaaaa;
+  --accent:#00e5ff;
+  --accent2:#33ecff;
+  --green:#4ade80;
+  --shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  background:
+    radial-gradient(circle at top left, rgba(0,229,255,0.08), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(0,229,255,0.05), transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:'Inter', sans-serif;
+  line-height:1.8;
+  padding-bottom:80px;
+}
+
+.container{ width:min(100%, 950px); margin:auto; padding:24px; }
+
+/* ── Hero ── */
+.hero{ padding:80px 0 50px; }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(0,229,255,0.08);
+  border:1px solid rgba(0,229,255,0.25);
+  color:var(--accent2);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:0.85rem;
+  font-weight:600;
+  margin-bottom:24px;
+  backdrop-filter:blur(10px);
+}
+
+h1{
+  font-size:clamp(2.4rem,6vw,4.5rem);
+  line-height:1.05;
+  letter-spacing:-2px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.hero > p{ color:var(--muted); max-width:700px; font-size:1.08rem; }
+
+.meta{ margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; }
+
+.meta-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  padding:14px 18px;
+  border-radius:18px;
+  backdrop-filter:blur(12px);
+}
+.meta-card span{ display:block; color:var(--muted); font-size:0.85rem; }
+.meta-card strong{ font-size:0.95rem; }
+
+/* ── Sections ── */
+.section{
+  margin-top:28px;
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  transition:0.3s ease;
+}
+.section:hover{ transform:translateY(-2px); border-color:#3a3a3a; }
+
+h2{ font-size:1.55rem; margin-bottom:18px; letter-spacing:-0.5px; }
+
+h3{ font-size:1.05rem; margin-top:26px; margin-bottom:10px; color:#ffffff; }
+
+p{ color:#d0d0d0; }
+
+ul{ margin-top:12px; padding-left:20px; }
+li{ margin-bottom:10px; color:#d0d0d0; }
+
+.card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:18px;
+  padding:22px;
+  margin-top:18px;
+}
+.card p{ margin-top:10px; }
+.card ul{ margin-top:10px; }
+
+.highlight{ color:var(--accent2); font-weight:600; }
+
+/* ── Tables ── */
+.table-wrap{ margin-top:20px; border-radius:18px; overflow:hidden; border:1px solid #2a2a2a; }
+
+table{ width:100%; border-collapse:collapse; }
+
+th{
+  background:#202020;
+  color:white;
+  text-align:left;
+  padding:16px 18px;
+  font-size:0.9rem;
+  font-weight:600;
+  letter-spacing:0.3px;
+}
+
+td{
+  padding:16px 18px;
+  border-top:1px solid #242424;
+  color:#d2d2d2;
+  vertical-align:top;
+  font-size:0.93rem;
+}
+
+tr:nth-child(even) td{ background:#161616; }
+tr:nth-child(odd) td{ background:#131313; }
+
+a{ color:var(--accent2); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* ── Misc ── */
+.divider{
+  width:100%;
+  height:1px;
+  background:linear-gradient(to right, transparent, #333, transparent);
+  margin:28px 0;
+}
+
+.notice{
+  border-left:4px solid var(--green);
+  background:rgba(74,222,128,0.08);
+  padding:16px 20px;
+  border-radius:16px;
+  margin-top:20px;
+  color:#d0d0d0;
+  font-size:0.95rem;
+}
+
+.footer{ margin-top:50px; text-align:center; color:#555; font-size:0.9rem; }
+
+@media(max-width:700px){
+  .section{ padding:24px; border-radius:22px; }
+  h1{ letter-spacing:-1px; }
+  td, th{ padding:12px 14px; font-size:0.88rem; }
+}
+</style>
 </head>
+
 <body>
-  <h1>Privacy Policy — REVKIN</h1>
-  <p><strong>Effective date:</strong> 25 May 2026<br>
-  <strong>Last updated:</strong> 25 May 2026<br>
-  <strong>Operated by:</strong> Shivam<br>
-  <strong>Contact:</strong> <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a></p>
+<div class="container">
 
-  <p>REVKIN is a motorcycle group-ride and solo-navigation app for Android. This policy explains what data we collect, why, and how it is used.</p>
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="badge">🛡️ REVKIN Privacy &amp; Safety</div>
 
-  <h2>1. Data We Collect and Why</h2>
+    <h1>Your Ride.<br>Your Data.<br>Your Control.</h1>
 
-  <p><strong>1.1 Precise location (always-on / background)</strong></p>
-  <p>Your GPS coordinates, speed, heading, and accuracy are collected continuously while a ride is active — including when the app is in the background or the screen is off. This is required for:</p>
-  <ul>
-    <li>Broadcasting your live position to your group on the ride map</li>
-    <li>Continuing turn-by-turn navigation when the screen is off</li>
-    <li>Calculating crash impact speed for crash detection</li>
-    <li>Including your coordinates in emergency SOS alerts</li>
-  </ul>
-  <p>Your GPS trail is saved to your personal ride history. It is never shared with users outside your active ride session. Location collection stops immediately when you end a ride.</p>
+    <p>
+      REVKIN is built for riders — not advertisers.
+      Your location, emergency safety features, and ride data exist solely
+      to power navigation, group riding, and crash response.
+      We never sell your data. Ever.
+    </p>
 
-  <p><strong>1.2 Emergency contact (name + phone number)</strong></p>
-  <p>One contact name and phone number you enter voluntarily in the Safety section of your profile. Used exclusively to send an emergency SMS when you trigger SOS, tap BREAK, or when crash detection auto-fires after a 60-second countdown with no response. Never shared with any third party. Never used for marketing.</p>
+    <div class="meta">
+      <div class="meta-card">
+        <span>Effective Date</span>
+        <strong>25 May 2026</strong>
+      </div>
+      <div class="meta-card">
+        <span>Last Updated</span>
+        <strong>25 May 2026</strong>
+      </div>
+      <div class="meta-card">
+        <span>Operated By</span>
+        <strong>Shivam</strong>
+      </div>
+      <div class="meta-card">
+        <span>Contact</span>
+        <strong><a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a></strong>
+      </div>
+    </div>
+  </section>
 
-  <p><strong>1.3 SMS (outbound only — we never read your messages)</strong></p>
-  <p>REVKIN sends a single outbound SMS to your emergency contact number during safety events (SOS, crash detection, BREAK stop). The SMS contains your name and a Google Maps link to your GPS location. REVKIN never reads your messages, contacts list, or call log.</p>
+  <!-- ── 1. Data We Collect ── -->
+  <section class="section">
+    <h2>1. Data We Collect and Why</h2>
 
-  <p><strong>1.4 Account information</strong></p>
-  <p>Google Sign-In provides your display name, email address, and profile photo URL. Phone OTP sign-in provides your phone number. Used only to create and identify your rider profile. Your email and phone number are never visible to other users.</p>
+    <div class="card">
+      <h3>📍 Precise Location (always-on / background)</h3>
+      <p>Your GPS coordinates, speed, heading, and accuracy are collected continuously while a ride is active — including when the app is in the background or the screen is off. This is required for:</p>
+      <ul>
+        <li>Broadcasting your live position to your group on the ride map</li>
+        <li>Continuing turn-by-turn navigation when the screen is off</li>
+        <li>Calculating crash impact speed for crash detection</li>
+        <li>Including your coordinates in emergency SOS alerts</li>
+      </ul>
+      <p>Your GPS trail is saved to your personal ride history in Firebase Firestore (encrypted in transit and at rest). It is never shared with users outside your active ride session.</p>
+      <p class="highlight" style="margin-top:12px;">Location collection stops immediately when you end a ride.</p>
+    </div>
 
-  <p><strong>1.5 Rider profile data</strong></p>
-  <p>Bike name/model, rider handle, blood group, and profile photo you optionally upload. Your handle and bike name are visible to other riders in your active session on the group map.</p>
+    <div class="card">
+      <h3>🚨 Emergency Contact (name + phone number)</h3>
+      <p>One contact name and phone number you enter voluntarily in the Safety section of your profile. Used exclusively to send an emergency SMS when you trigger SOS, tap BREAK, or when crash detection auto-fires after a 60-second countdown with no response.</p>
+      <p style="margin-top:10px;">Never shared with any third party. Never used for marketing.</p>
+    </div>
 
-  <p><strong>1.6 Ride history and analytics</strong></p>
-  <p>For each completed ride: start/end time, distance, duration, max speed, GPS trail, and mood selection. Used for your personal ride history, stats, heatmap, and personal record tracking. This data belongs to you and is not shared.</p>
+    <div class="card">
+      <h3>📱 SMS — Outbound Only</h3>
+      <p>REVKIN sends a single outbound SMS to your emergency contact during safety events (SOS trigger, crash detection auto-fire, BREAK stop). The SMS contains your name and a Google Maps link to your last GPS location.</p>
+      <p style="margin-top:10px;" class="highlight">REVKIN never reads your messages, contacts list, or call log.</p>
+    </div>
 
-  <p><strong>1.7 Crash reports</strong></p>
-  <p>Anonymous crash reports (stack trace, device model, Android version, app version) sent to Firebase Crashlytics and Sentry for bug fixing. No personally identifiable information is included. Disabled in debug builds.</p>
+    <div class="card">
+      <h3>👤 Account Information</h3>
+      <p>Google Sign-In provides your display name, email address, and profile photo URL. Phone OTP sign-in provides your phone number. Used only to create and identify your rider profile.</p>
+      <p style="margin-top:10px;">Your email and phone number are never visible to other users.</p>
+    </div>
 
-  <p><strong>1.8 Device information</strong></p>
-  <p>Device manufacturer and model — used in memory only to show OEM-specific battery optimisation instructions (e.g. Xiaomi vs Samsung). Not stored on any server.</p>
+    <div class="card">
+      <h3>🏍️ Rider Profile Data</h3>
+      <p>Bike name/model, rider handle, blood group, and profile photo you optionally upload. Your handle and bike name are visible to other riders in your active session on the group map.</p>
+    </div>
 
-  <h2>2. Data We Do NOT Collect</h2>
-  <ul>
-    <li>We do not read your contacts list, call log, or existing SMS messages</li>
-    <li>We do not record microphone audio (voice commands are processed on-device by Android speech recognition; no audio reaches our servers)</li>
-    <li>We do not track you outside of active ride sessions</li>
-    <li>We do not sell, rent, or trade your data</li>
-    <li>We do not use your data for advertising</li>
-  </ul>
+    <div class="card">
+      <h3>📊 Ride History &amp; Analytics</h3>
+      <p>For each completed ride: start/end time, distance, duration, max speed, GPS trail, and mood selection. Used for your personal ride history, stats, heatmap, and personal record tracking. This data belongs to you and is not shared with other users.</p>
+    </div>
 
-  <h2>3. How We Share Your Data</h2>
-  <table>
-    <tr><th>Recipient</th><th>What</th><th>Why</th></tr>
-    <tr><td>Other riders in your active session</td><td>Live GPS position (dot on map), rider handle, bike name</td><td>Core group ride functionality</td></tr>
-    <tr><td>Your emergency contact (SMS)</td><td>Your name + GPS coordinates</td><td>Safety events only</td></tr>
-    <tr><td>Google Firebase</td><td>All stored data (Auth, Firestore, Storage, Crashlytics)</td><td>Infrastructure — <a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></td></tr>
-    <tr><td>Sentry</td><td>Anonymous crash stack traces</td><td>Error monitoring</td></tr>
-    <tr><td>Mapbox</td><td>Route start/end coordinates</td><td>Navigation — <a href="https://www.mapbox.com/legal/privacy">Mapbox Privacy</a></td></tr>
-  </table>
-  <p>We do not share your data with any other party.</p>
+    <div class="card">
+      <h3>🐛 Crash Reports</h3>
+      <p>Anonymous crash reports (stack trace, device model, Android version, app version) sent to Firebase Crashlytics and Sentry for bug fixing. No personally identifiable information is included. Disabled in debug builds.</p>
+    </div>
 
-  <h2>4. Data Retention</h2>
-  <table>
-    <tr><th>Data type</th><th>Retention</th></tr>
-    <tr><td>Ride history + GPS trails</td><td>Until you delete your account</td></tr>
-    <tr><td>Rider profile</td><td>Until you delete your account</td></tr>
-    <tr><td>Live ride telemetry</td><td>Auto-deleted within 24 hours of ride end</td></tr>
-    <tr><td>Crash reports</td><td>90 days (Crashlytics default)</td></tr>
-    <tr><td>Emergency contact</td><td>Until removed or account deleted</td></tr>
-  </table>
+    <div class="card">
+      <h3>📲 Device Information</h3>
+      <p>Device manufacturer and model — used in memory only to show OEM-specific battery optimisation instructions (e.g. Xiaomi vs Samsung). Not stored on any server.</p>
+    </div>
+  </section>
 
-  <h2>5. Account Deletion</h2>
-  <p>Go to <strong>Profile &rarr; menu &rarr; Delete Account</strong>. This permanently deletes all your Firestore data, profile photo, local preferences, and your Firebase Authentication account. Deletion is irreversible.</p>
+  <!-- ── 2. What We Never Collect ── -->
+  <section class="section">
+    <h2>2. What We Never Collect</h2>
 
-  <h2>6. Children's Privacy</h2>
-  <p>REVKIN is not directed at children under 13. We do not knowingly collect data from anyone under 13. Contact <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a> if you believe a child's data has been collected and we will delete it.</p>
+    <div class="notice">
+      REVKIN is privacy-first by design. Here is what we explicitly do not do.
+    </div>
 
-  <h2>7. Security</h2>
-  <p>All data in transit is encrypted via TLS. Firebase Firestore data is encrypted at rest. Firestore security rules enforce that each user can only read and write their own data. API keys are injected at build time and are not present in the app binary or source code.</p>
+    <ul>
+      <li>We do not read your contacts list, call log, or existing SMS messages</li>
+      <li>We do not record microphone audio — voice commands are processed entirely on-device by Android speech recognition; no audio is sent to our servers</li>
+      <li>We do not track you outside of active ride sessions</li>
+      <li>We do not sell, rent, or trade your data to any third party</li>
+      <li>We do not use your data for advertising</li>
+      <li>We do not use third-party analytics SDKs beyond crash reporting</li>
+    </ul>
+  </section>
 
-  <h2>8. Your Rights</h2>
-  <ul>
-    <li><strong>Access</strong> — your data is visible within the app (Profile, Ride History, Planned Rides)</li>
-    <li><strong>Delete</strong> — use in-app account deletion (see Section 5)</li>
-    <li><strong>Correct</strong> — edit your profile, emergency contact, or bike details in-app</li>
-    <li><strong>Export</strong> — use GPX export on any saved ride</li>
-  </ul>
-  <p>For anything not covered by in-app controls, email <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a>.</p>
+  <!-- ── 3. Data Sharing ── -->
+  <section class="section">
+    <h2>3. How We Share Your Data</h2>
 
-  <h2>9. Changes to This Policy</h2>
-  <p>We may update this policy. The "Last updated" date at the top will reflect any changes. Continued use of the app after a change constitutes acceptance.</p>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Recipient</th>
+          <th>What Is Shared</th>
+          <th>Why</th>
+        </tr>
+        <tr>
+          <td>Other riders in your active session</td>
+          <td>Live GPS position (dot on map), rider handle, bike name</td>
+          <td>Core group ride functionality</td>
+        </tr>
+        <tr>
+          <td>Your emergency contact (SMS)</td>
+          <td>Your name + GPS coordinates</td>
+          <td>Safety events only</td>
+        </tr>
+        <tr>
+          <td>Google Firebase</td>
+          <td>All stored data (Auth, Firestore, Storage, Crashlytics)</td>
+          <td>Infrastructure — <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
+        </tr>
+        <tr>
+          <td>Sentry</td>
+          <td>Anonymous crash stack traces</td>
+          <td>Error monitoring</td>
+        </tr>
+        <tr>
+          <td>Mapbox</td>
+          <td>Route start/end coordinates</td>
+          <td>Navigation &amp; map rendering — <a href="https://www.mapbox.com/legal/privacy" target="_blank">Mapbox Privacy</a></td>
+        </tr>
+      </table>
+    </div>
 
-  <h2>10. Contact</h2>
-  <p><strong>Shivam</strong><br>
-  <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a></p>
+    <p style="margin-top:18px;">We do not share your data with any other party.</p>
+  </section>
+
+  <!-- ── 4. Data Retention ── -->
+  <section class="section">
+    <h2>4. Data Retention</h2>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Data Type</th>
+          <th>Retention Period</th>
+        </tr>
+        <tr>
+          <td>Ride history &amp; GPS trails</td>
+          <td>Until you delete your account</td>
+        </tr>
+        <tr>
+          <td>Rider profile</td>
+          <td>Until you delete your account</td>
+        </tr>
+        <tr>
+          <td>Live ride telemetry (RTDB)</td>
+          <td>Auto-deleted within 24 hours of ride end</td>
+        </tr>
+        <tr>
+          <td>Crash reports</td>
+          <td>90 days (Crashlytics default)</td>
+        </tr>
+        <tr>
+          <td>Emergency contact</td>
+          <td>Until you remove it or delete your account</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 5. Account Deletion ── -->
+  <section class="section">
+    <h2>5. Account Deletion</h2>
+
+    <p>You can permanently delete your account at any time:</p>
+
+    <div class="card" style="margin-top:16px;">
+      <strong>Profile &rarr; Menu (⋮) &rarr; Delete Account</strong>
+    </div>
+
+    <p style="margin-top:18px;">
+      This performs a full wipe: all Firestore documents under your user ID (profile, rides, planned rides, alerts), your profile photo from Firebase Storage, all local SharedPreferences, and your Firebase Authentication account.
+    </p>
+    <p style="margin-top:10px;" class="highlight">Deletion is permanent and irreversible.</p>
+  </section>
+
+  <!-- ── 6. Your Rights ── -->
+  <section class="section">
+    <h2>6. Your Rights</h2>
+
+    <ul>
+      <li><strong>Access</strong> — your data is visible within the app (Profile, Ride History, Planned Rides)</li>
+      <li><strong>Correct</strong> — edit your profile, emergency contact, or bike details in-app at any time</li>
+      <li><strong>Delete</strong> — use in-app account deletion (see Section 5)</li>
+      <li><strong>Export</strong> — export any ride as a GPX file using the export button on the ride recap screen</li>
+    </ul>
+
+    <p style="margin-top:18px;">For anything not covered by in-app controls, email <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a> and we will respond within 7 days.</p>
+  </section>
+
+  <!-- ── 7. Security ── -->
+  <section class="section">
+    <h2>7. Security</h2>
+
+    <p>All data in transit between the app and Firebase is encrypted using TLS. Firebase Firestore data is encrypted at rest. Firestore security rules enforce that each user can only read and write their own data — no user can access another user's rides, profile, or alerts.</p>
+
+    <div class="divider"></div>
+
+    <p>API keys (Mapbox, OpenWeatherMap) are injected at build time via a gitignored configuration file and are never stored in the app binary, source code, or public repositories.</p>
+  </section>
+
+  <!-- ── 8. Children's Privacy ── -->
+  <section class="section">
+    <h2>8. Children's Privacy</h2>
+
+    <p>REVKIN is not directed at children under 13 years of age. We do not knowingly collect personal information from anyone under 13. If you believe a child under 13 has provided us with personal information, contact us at <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a> and we will delete it promptly.</p>
+  </section>
+
+  <!-- ── 9. Changes ── -->
+  <section class="section">
+    <h2>9. Changes to This Policy</h2>
+
+    <p>We may update this policy from time to time. The "Last updated" date at the top of this page will reflect any changes. Continued use of the app after a change is posted constitutes your acceptance of the updated policy.</p>
+  </section>
+
+  <!-- ── 10. Contact ── -->
+  <section class="section">
+    <h2>10. Contact</h2>
+
+    <div class="card">
+      <p><strong>Shivam</strong></p>
+      <p style="margin-top:10px;">📧 <a href="mailto:kumarshivam1993@gmail.com">kumarshivam1993@gmail.com</a></p>
+    </div>
+  </section>
+
+  <div class="footer">
+    REVKIN © 2026 &nbsp;•&nbsp; Built for Riders
+  </div>
+
+</div>
 </body>
 </html>
