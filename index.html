@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REVKIN — Ride With Your Brothers</title>
-  <meta name="description" content="The tactical riding companion built for pack riders. Group tracking, navigation, crash detection — designed to be used at speed, wearing gloves." />
+  <title>REVKIN — Your Tactical Riding Companion</title>
+  <meta name="description" content="The tactical riding companion for solo tourers and pack riders. Live group tracking, navigation, crash detection — designed to be used at speed, wearing gloves." />
   <style>
     :root {
       --cyan: #06b6d4;
@@ -610,13 +610,14 @@
     }
 
     .footer-links a {
-      color: var(--text-muted);
+      color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.8em;
       letter-spacing: 1px;
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--cyan); }
+    .footer-links a.privacy { color: #64748b; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -667,13 +668,13 @@
       </div>
 
       <h1 class="hero-headline">
-        The road is better<br>
-        <span class="accent">with your pack.</span>
+        Every ride deserves<br>
+        <span class="accent">a proper safety net.</span>
       </h1>
 
       <p class="hero-sub">
-        Most riding apps were built for solo commuters.<br>
-        <strong>REVKIN was built for the ride you plan for weeks,</strong> do with five brothers, and talk about for years.
+        Whether you ride alone or lead a pack of ten &mdash;<br>
+        <strong>REVKIN was built for the ride you take seriously.</strong> Navigation, live group tracking, and crash detection that works the same whether there's one of you or twelve.
       </p>
 
       <div class="hero-actions">
@@ -716,13 +717,16 @@
     </h2>
     <div class="philosophy-body">
       <p>
-        Every pack ride has the same three problems: <strong>someone gets left behind, no one knows where to stop, and when something goes wrong &mdash; nobody knows fast enough.</strong>
+        Pack rides have the same three problems: <strong>someone gets left behind, no one knows where to stop, and when something goes wrong &mdash; nobody knows fast enough.</strong>
       </p>
       <p>
-        We built REVKIN to solve all three without making you stare at your screen. The HUD is glanceable at 80 kmph. The controls are large enough for gloves. The safety net runs in the background so you don't have to think about it.
+        Solo rides have a different problem: <strong>if something goes wrong, no one knows at all.</strong> No pack to notice you've gone quiet. No one watching your position.
       </p>
       <p>
-        This isn't a fitness tracker with a map bolted on. It isn't a consumer navigation app with a group-share feature nobody uses. It's <strong>a coordination layer built from scratch for the way pack rides actually work.</strong>
+        We built REVKIN to solve both without making you stare at your screen. The HUD is glanceable at 80 kmph. The controls are large enough for gloves. The safety net runs in the background &mdash; whether you're riding alone or at the tail of a ten-bike convoy.
+      </p>
+      <p>
+        This isn't a fitness tracker with a map bolted on. It isn't a consumer navigation app with a group-share feature nobody uses. It's <strong>a riding companion built from scratch for the way real rides actually work.</strong>
       </p>
     </div>
   </section>
@@ -731,7 +735,7 @@
   <div class="pull-quote-section">
     <div class="pull-quote">
       <blockquote>
-        "Built for the ride you <em>plan for weeks</em>, do with five brothers, and <em>talk about for years</em> &mdash; not the solo commute you forget by evening."
+        "Built for the ride you <em>plan for weeks</em> &mdash; whether you do it alone into the mountains, or with five brothers you'll <em>talk about it for years.</em>"
       </blockquote>
     </div>
   </div>
@@ -766,7 +770,7 @@
           <span class="exp-number">03</span>
           <h3>The safety net you forget is there</h3>
           <p>
-            Crash detection is always on. If it fires, your GPS goes to everyone in the ride instantly. Dead man's timer if you need it, one-tap SOS when you don't want to wait. <strong>You ride with confidence because the failsafe is silent until it isn't.</strong>
+            Crash detection is always on. If it fires, your GPS goes to your pack &mdash; or your emergency contacts if you're riding solo. Dead man's timer if you need it, one-tap SOS when you don't want to wait. <strong>You ride with confidence because the failsafe is silent until it isn't.</strong>
           </p>
         </div>
 
@@ -804,13 +808,21 @@
         <div class="rider-row">
           <div class="rider-index">01</div>
           <div class="rider-content">
+            <h4>The solo tourer who rides into the unknown</h4>
+            <p>No pack doesn't mean no safety net. Your emergency contacts get your live GPS if something goes wrong. Dead man's timer, crash detection, one-tap SOS &mdash; the full suite works for one rider just as well as ten.</p>
+          </div>
+        </div>
+
+        <div class="rider-row">
+          <div class="rider-index">02</div>
+          <div class="rider-content">
             <h4>The pack leader who's tired of WhatsApp logistics</h4>
             <p>You plan the route, you set the pace, you check on everyone. REVKIN gives you the tools to actually do that from the handlebar &mdash; not from a 47-message thread at midnight before the ride.</p>
           </div>
         </div>
 
         <div class="rider-row">
-          <div class="rider-index">02</div>
+          <div class="rider-index">03</div>
           <div class="rider-content">
             <h4>The tail-end rider who always loses the pack</h4>
             <p>You hit a red light, the pack doesn't notice, and suddenly you're navigating alone in an unfamiliar city. REVKIN means the host can see you've fallen behind &mdash; and the app can too.</p>
@@ -818,18 +830,10 @@
         </div>
 
         <div class="rider-row">
-          <div class="rider-index">03</div>
-          <div class="rider-content">
-            <h4>The long-distance tourer who rides alone</h4>
-            <p>No pack doesn't mean no safety net. Your emergency contacts get your GPS if something goes wrong. Dead man's timer, crash detection, SOS &mdash; the full suite works solo.</p>
-          </div>
-        </div>
-
-        <div class="rider-row">
           <div class="rider-index">04</div>
           <div class="rider-content">
             <h4>The rider who wants their phone to just work</h4>
-            <p>Sign in with your phone number &mdash; no email, no password, no account setup friction. Open the app, join a ride, go. Your garage, your routes, your history, always there.</p>
+            <p>Sign in with your phone number &mdash; no email, no password, no account setup friction. Open the app, start a ride, go. Your garage, your routes, your history, always there.</p>
           </div>
         </div>
 
@@ -857,7 +861,7 @@
           JOIN THE COMMUNITY
         </a>
       </div>
-      <p class="cta-note">Android only &middot; Free during beta &middot; No spam, ever</p>
+      <p class="cta-note">Android only &middot; Free during beta &middot; No spam, ever &middot; <a href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:0.7;">Privacy Policy</a></p>
     </div>
   </section>
 
@@ -868,7 +872,7 @@
       <div class="footer-tagline">TACTICAL RIDING COMPANION</div>
     </div>
     <div class="footer-links">
-      <a href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">Privacy Policy</a>
+      <a class="privacy" href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">Privacy Policy</a>
       <a href="https://chat.whatsapp.com/IYhINE7ffytINuzpOOqbUK" target="_blank">Community</a>
       <a href="mailto:kumarshivam1993@gmail.com">Contact</a>
       <a href="https://play.google.com/apps/internaltest/4701671090989309816" target="_blank">Google Play</a>
