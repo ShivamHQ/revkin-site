@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REVKIN — Your Tactical Riding Companion</title>
-  <meta name="description" content="The tactical riding companion for solo tourers and pack riders. Live group tracking, navigation, crash detection — designed to be used at speed, wearing gloves." />
+  <title>REVKIN — Ride Like Someone's Got Your Back</title>
+  <meta name="description" content="The riding companion built for Indian motorcyclists. Live group tracking, glove-ready navigation, crash detection, and offline maps — designed to be used at speed." />
+  <meta property="og:title" content="REVKIN — Ride Like Someone's Got Your Back" />
+  <meta property="og:description" content="Live group tracking, crash detection, offline maps, and a safety net that never sleeps. Now live on Google Play." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#06b6d4" />
   <style>
     :root {
       --cyan: #06b6d4;
-      --cyan-dim: rgba(6,182,212,0.15);
+      --cyan-soft: rgba(6,182,212,0.12);
       --cyan-glow: rgba(6,182,212,0.4);
       --bg: #080a0f;
       --surface: #0d1117;
+      --surface2: #111620;
       --border: rgba(255,255,255,0.06);
-      --text-muted: #4a5568;
+      --border-cyan: rgba(6,182,212,0.18);
+      --text-muted: #3d4a5c;
       --text-secondary: #8892a4;
+      --text-primary: #e2e8f0;
       --green: #22c55e;
+      --green-soft: rgba(34,197,94,0.12);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -30,50 +37,54 @@
       line-height: 1;
     }
 
+    /* ── SCROLL FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 0 40px;
       height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(8,10,15,0.85);
-      backdrop-filter: blur(20px);
+      background: rgba(8,10,15,0.9);
+      backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-size: 1.3em;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 5px;
       color: var(--cyan);
       text-decoration: none;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
 
     .nav-status {
       display: flex;
       align-items: center;
       gap: 8px;
       color: var(--green);
-      font-size: 0.72em;
+      font-size: 0.7em;
       letter-spacing: 2px;
       font-weight: 700;
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--green);
       animation: pulse-dot 2s ease-in-out infinite;
@@ -81,7 +92,7 @@
 
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+      50% { opacity: 0.4; transform: scale(0.7); }
     }
 
     .nav-cta {
@@ -96,7 +107,7 @@
       white-space: nowrap;
       transition: background 0.2s, box-shadow 0.2s;
     }
-    .nav-cta:hover { background: #22d3ee; box-shadow: 0 0 20px rgba(6,182,212,0.4); }
+    .nav-cta:hover { background: #22d3ee; box-shadow: 0 0 24px rgba(6,182,212,0.5); }
 
     /* ── HERO ── */
     .hero {
@@ -107,97 +118,82 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      padding: 120px 24px 100px;
       overflow: hidden;
     }
 
     .hero-grid {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
     }
 
     .hero-glow {
       position: absolute;
-      width: 800px;
-      height: 800px;
+      width: 900px; height: 900px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 65%);
-      top: 50%;
-      left: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
 
     .hero-horizon {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.3) 30%, rgba(6,182,212,0.6) 50%, rgba(6,182,212,0.3) 70%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.3) 30%, rgba(6,182,212,0.7) 50%, rgba(6,182,212,0.3) 70%, transparent 100%);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 820px;
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 840px; }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       background: rgba(6,182,212,0.08);
-      border: 1px solid rgba(6,182,212,0.2);
+      border: 1px solid var(--border-cyan);
       border-radius: 40px;
-      padding: 6px 16px 6px 10px;
-      font-size: 0.7em;
+      padding: 7px 18px 7px 10px;
+      font-size: 0.68em;
       letter-spacing: 3px;
       color: var(--cyan);
       font-weight: 700;
-      margin-bottom: 40px;
+      margin-bottom: 44px;
     }
 
     .hero-eyebrow-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--green);
       animation: pulse-dot 2s ease-in-out infinite;
     }
 
     .hero-headline {
-      font-size: clamp(3em, 8vw, 6em);
+      font-size: clamp(2.8em, 8vw, 6em);
       font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -1px;
+      line-height: 1.06;
+      letter-spacing: -1.5px;
       margin-bottom: 12px;
     }
 
     .hero-headline .accent {
       color: var(--cyan);
-      text-shadow: 0 0 60px rgba(6,182,212,0.5);
+      text-shadow: 0 0 80px rgba(6,182,212,0.6);
     }
 
     .hero-sub {
-      font-size: clamp(1em, 2vw, 1.25em);
+      font-size: clamp(1em, 2vw, 1.2em);
       color: var(--text-secondary);
-      line-height: 1.75;
-      max-width: 560px;
+      line-height: 1.8;
+      max-width: 540px;
       margin: 28px auto 0;
-      font-weight: 400;
     }
-
-    .hero-sub strong {
-      color: #cbd5e1;
-      font-weight: 600;
-    }
+    .hero-sub strong { color: #cbd5e1; font-weight: 600; }
 
     .hero-actions {
       display: flex;
@@ -207,6 +203,7 @@
       margin-top: 48px;
     }
 
+    /* ── BUTTONS ── */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -215,38 +212,17 @@
       color: #000;
       font-weight: 800;
       letter-spacing: 1.5px;
-      font-size: 0.88em;
+      font-size: 0.85em;
       padding: 16px 32px;
       border-radius: 8px;
       text-decoration: none;
       transition: all 0.2s;
-      box-shadow: 0 0 30px rgba(6,182,212,0.25);
+      box-shadow: 0 0 30px rgba(6,182,212,0.3);
     }
     .btn-primary:hover {
       background: #22d3ee;
-      box-shadow: 0 0 50px rgba(6,182,212,0.5);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: transparent;
-      border: 1px solid rgba(6,182,212,0.35);
-      color: var(--cyan);
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      font-size: 0.88em;
-      padding: 16px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--cyan);
-      background: rgba(6,182,212,0.06);
-      transform: translateY(-1px);
+      box-shadow: 0 0 60px rgba(6,182,212,0.6);
+      transform: translateY(-2px);
     }
 
     .btn-whatsapp {
@@ -257,7 +233,7 @@
       color: #000;
       font-weight: 800;
       letter-spacing: 1.5px;
-      font-size: 0.88em;
+      font-size: 0.85em;
       padding: 16px 32px;
       border-radius: 8px;
       text-decoration: none;
@@ -267,58 +243,82 @@
     .btn-whatsapp:hover {
       background: #2eeb72;
       box-shadow: 0 0 40px rgba(37,211,102,0.4);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
-    /* ── SOCIAL PROOF BAR ── */
-    .social-proof {
+    /* ── TRUST BAR ── */
+    .trust-bar {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 20px 40px;
+      padding: 18px 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
+      gap: 40px;
       flex-wrap: wrap;
+      background: rgba(13,17,23,0.6);
     }
 
-    .proof-item {
+    .trust-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.8em;
+      gap: 9px;
+      font-size: 0.78em;
       color: var(--text-secondary);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
-    .proof-item strong {
-      color: #cbd5e1;
-      font-weight: 700;
-    }
-    .proof-divider {
-      width: 1px;
-      height: 28px;
-      background: var(--border);
+    .trust-item strong { color: #cbd5e1; font-weight: 700; }
+    .trust-icon { font-size: 1em; opacity: 0.7; }
+    .trust-divider { width: 1px; height: 24px; background: var(--border); }
+
+    /* ── FEATURE PILLS ── */
+    .feature-pills {
+      padding: 72px 24px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
-    /* ── PHILOSOPHY SECTION ── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 8px 16px;
+      font-size: 0.75em;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .pill:hover { border-color: var(--border-cyan); color: #cbd5e1; }
+    .pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); opacity: 0.7; }
+
+    /* ── PHILOSOPHY ── */
     .section-philosophy {
-      padding: 120px 24px;
-      max-width: 900px;
+      padding: 100px 24px 80px;
+      max-width: 860px;
       margin: 0 auto;
       text-align: center;
     }
 
     .overline {
-      font-size: 0.7em;
+      font-size: 0.68em;
       letter-spacing: 5px;
       color: var(--cyan);
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       text-transform: uppercase;
+      display: block;
     }
 
     .philosophy-headline {
-      font-size: clamp(1.8em, 4vw, 3em);
+      font-size: clamp(1.8em, 4vw, 2.8em);
       font-weight: 800;
       line-height: 1.25;
       letter-spacing: -0.5px;
@@ -326,72 +326,50 @@
     }
 
     .philosophy-body {
-      font-size: 1.1em;
+      font-size: 1.05em;
       color: var(--text-secondary);
-      line-height: 1.9;
-      max-width: 680px;
+      line-height: 1.95;
+      max-width: 660px;
       margin: 0 auto;
     }
-
     .philosophy-body p + p { margin-top: 20px; }
-
-    .philosophy-body strong {
-      color: #e2e8f0;
-      font-weight: 600;
-    }
+    .philosophy-body strong { color: #e2e8f0; font-weight: 600; }
 
     /* ── PULL QUOTE ── */
-    .pull-quote-section {
-      padding: 0 24px 100px;
-    }
+    .pull-quote-section { padding: 0 24px 100px; }
 
     .pull-quote {
-      max-width: 860px;
+      max-width: 820px;
       margin: 0 auto;
       border-left: 3px solid var(--cyan);
       padding: 32px 48px;
-      background: linear-gradient(135deg, rgba(6,182,212,0.04) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(6,182,212,0.05) 0%, transparent 70%);
       border-radius: 0 12px 12px 0;
     }
 
     .pull-quote blockquote {
-      font-size: clamp(1.1em, 2.5vw, 1.6em);
+      font-size: clamp(1.05em, 2.5vw, 1.5em);
       font-weight: 700;
-      line-height: 1.5;
+      line-height: 1.55;
       color: #cbd5e1;
       font-style: italic;
     }
+    .pull-quote blockquote em { color: var(--cyan); font-style: normal; }
 
-    .pull-quote blockquote em {
-      color: var(--cyan);
-      font-style: normal;
-    }
+    /* ── FEATURES GRID ── */
+    .section-experience { padding: 80px 24px 100px; }
 
-    /* ── EXPERIENCE SECTIONS ── */
-    .section-experience {
-      padding: 80px 24px 100px;
-    }
-
-    .experience-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .experience-inner .overline {
-      text-align: center;
-      display: block;
-      margin-bottom: 16px;
-    }
+    .experience-inner { max-width: 1100px; margin: 0 auto; }
+    .experience-inner .overline { text-align: center; margin-bottom: 16px; }
 
     .section-title {
       text-align: center;
-      font-size: clamp(1.6em, 3.5vw, 2.6em);
+      font-size: clamp(1.6em, 3.5vw, 2.4em);
       font-weight: 800;
       letter-spacing: -0.5px;
       line-height: 1.2;
       margin-bottom: 64px;
     }
-
     .section-title .dim { color: var(--text-secondary); font-weight: 400; }
 
     .exp-grid {
@@ -405,55 +383,45 @@
 
     .exp-card {
       background: var(--surface);
-      padding: 48px 40px;
+      padding: 44px 40px;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s;
+      transition: background 0.25s;
     }
+    .exp-card:hover { background: var(--surface2); }
+    .exp-card.wide { grid-column: span 2; }
 
-    .exp-card:hover { background: #0f151f; }
-
-    .exp-card.wide {
-      grid-column: span 2;
-    }
-
-    .exp-card::after {
+    .exp-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(6,182,212,0.15), transparent);
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .exp-card:hover::after { opacity: 1; }
+    .exp-card:hover::before { opacity: 0.4; }
 
-    .exp-number {
-      font-size: 0.65em;
-      letter-spacing: 4px;
-      color: var(--cyan);
-      font-weight: 700;
+    .exp-icon {
+      font-size: 1.6em;
       margin-bottom: 20px;
       display: block;
-      opacity: 0.6;
+      line-height: 1;
     }
 
     .exp-card h3 {
-      font-size: 1.25em;
+      font-size: 1.15em;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
       color: #f1f5f9;
     }
 
     .exp-card p {
       color: var(--text-secondary);
-      font-size: 0.95em;
-      line-height: 1.75;
+      font-size: 0.93em;
+      line-height: 1.8;
     }
-
     .exp-card p strong { color: #94a3b8; font-weight: 600; }
 
     /* ── WHO IT'S FOR ── */
@@ -462,11 +430,7 @@
       background: linear-gradient(180deg, transparent 0%, rgba(6,182,212,0.02) 50%, transparent 100%);
     }
 
-    .riders-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    .riders-inner { max-width: 860px; margin: 0 auto; text-align: center; }
 
     .rider-types {
       display: flex;
@@ -489,53 +453,74 @@
     .rider-row:last-child { border-bottom: none; }
     .rider-row:hover { background: var(--surface); }
 
-    .rider-index {
-      font-size: 2em;
-      font-weight: 900;
-      color: rgba(6,182,212,0.12);
+    .rider-emoji {
+      font-size: 1.8em;
       line-height: 1;
-      min-width: 36px;
       padding-top: 2px;
+      min-width: 36px;
     }
 
     .rider-content h4 {
-      font-size: 1.05em;
+      font-size: 1em;
       font-weight: 700;
       margin-bottom: 8px;
       color: #f1f5f9;
     }
-
     .rider-content p {
-      font-size: 0.9em;
+      font-size: 0.88em;
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    /* ── BETA CTA ── */
-    .section-cta {
-      padding: 80px 24px 120px;
+    /* ── BUILT FOR INDIA ── */
+    .section-india {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
     }
+
+    .india-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .india-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .india-card:hover { border-color: var(--border-cyan); background: var(--surface2); }
+
+    .india-card-icon { font-size: 1.8em; margin-bottom: 12px; display: block; }
+    .india-card h4 { font-size: 0.9em; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; letter-spacing: 0.3px; }
+    .india-card p { font-size: 0.8em; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── CTA ── */
+    .section-cta { padding: 80px 24px 120px; }
 
     .cta-inner {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       text-align: center;
-      border: 1px solid rgba(6,182,212,0.15);
+      border: 1px solid var(--border-cyan);
       border-radius: 20px;
       padding: 64px 48px;
       position: relative;
-      background: linear-gradient(135deg, rgba(6,182,212,0.04) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(6,182,212,0.05) 0%, transparent 60%);
       overflow: hidden;
     }
 
     .cta-glow {
       position: absolute;
-      width: 500px;
-      height: 500px;
+      width: 500px; height: 500px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 65%);
-      top: 50%;
-      left: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 65%);
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
@@ -543,7 +528,7 @@
     .cta-inner .overline { margin-bottom: 16px; }
 
     .cta-headline {
-      font-size: clamp(1.8em, 4vw, 2.8em);
+      font-size: clamp(1.8em, 4vw, 2.6em);
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.5px;
@@ -552,9 +537,9 @@
 
     .cta-body {
       color: var(--text-secondary);
-      font-size: 1em;
-      line-height: 1.75;
-      max-width: 520px;
+      font-size: 0.98em;
+      line-height: 1.8;
+      max-width: 480px;
       margin: 0 auto 40px;
     }
 
@@ -567,77 +552,68 @@
 
     .cta-note {
       margin-top: 24px;
-      font-size: 0.75em;
+      font-size: 0.72em;
       color: var(--text-muted);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      line-height: 1.8;
     }
+    .cta-note a { color: inherit; text-decoration: underline; text-underline-offset: 3px; opacity: 0.8; }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px;
+      padding: 36px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-logo { font-size: 0.9em; font-weight: 900; letter-spacing: 4px; color: var(--cyan); }
+    .footer-tagline { font-size: 0.68em; color: var(--text-muted); letter-spacing: 2px; margin-top: 2px; }
 
-    .footer-logo {
-      font-size: 0.9em;
-      font-weight: 800;
-      letter-spacing: 4px;
-      color: var(--cyan);
-    }
-
-    .footer-tagline {
-      font-size: 0.72em;
-      color: var(--text-muted);
-      letter-spacing: 2px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
+    .footer-links { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
     .footer-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.8em;
-      letter-spacing: 1px;
+      font-size: 0.78em;
+      letter-spacing: 0.5px;
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--cyan); }
-    .footer-links a.privacy { color: #64748b; }
+    .footer-links a.privacy { color: #4a5568; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-status { display: none; }
 
-      .social-proof { gap: 20px; padding: 20px; }
-      .proof-divider { display: none; }
+      .trust-bar { gap: 16px; padding: 16px 20px; }
+      .trust-divider { display: none; }
+
+      .feature-pills { padding-top: 48px; }
 
       .exp-grid { grid-template-columns: 1fr; }
       .exp-card.wide { grid-column: span 1; }
       .exp-card { padding: 32px 24px; }
 
+      .india-grid { grid-template-columns: 1fr; }
+
       .rider-row { padding: 24px 20px; gap: 16px; }
 
       .cta-inner { padding: 40px 24px; }
-
       .pull-quote { padding: 24px 28px; }
 
-      footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-whatsapp { width: 100%; justify-content: center; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .india-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -649,9 +625,9 @@
     <div class="nav-right">
       <div class="nav-status">
         <div class="status-dot"></div>
-        BETA LIVE
+        NOW LIVE
       </div>
-      <a class="nav-cta" href="https://play.google.com/apps/internaltest/4701671090989309816" target="_blank">JOIN BETA</a>
+      <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.revkin.app&pli=1" target="_blank">GET THE APP</a>
     </div>
   </nav>
 
@@ -664,7 +640,7 @@
     <div class="hero-content">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-dot"></div>
-        EARLY ACCESS &middot; ANDROID
+        NOW LIVE &middot; ANDROID &middot; 16 COUNTRIES
       </div>
 
       <h1 class="hero-headline">
@@ -673,13 +649,12 @@
       </h1>
 
       <p class="hero-sub">
-        Solo into the mountains or leading a ten-bike convoy &mdash;<br>
-        <strong>REVKIN is the riding companion built for rides that matter.</strong> Live group tracking, glove-ready navigation, and a crash safety net that's always on.
+        <strong>The riding companion built for Indian motorcyclists.</strong> Live group tracking, glove-ready navigation, crash detection, and offline maps &mdash; designed to be used at speed, wearing gloves.
       </p>
 
       <div class="hero-actions">
-        <a class="btn-primary" href="https://play.google.com/apps/internaltest/4701671090989309816" target="_blank">
-          JOIN BETA ON GOOGLE PLAY
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.revkin.app&pli=1" target="_blank">
+          &#9654;&nbsp; DOWNLOAD ON GOOGLE PLAY
         </a>
         <a class="btn-whatsapp" href="https://chat.whatsapp.com/IYhINE7ffytINuzpOOqbUK" target="_blank">
           JOIN THE COMMUNITY
@@ -688,29 +663,51 @@
     </div>
   </section>
 
-  <!-- SOCIAL PROOF BAR -->
-  <div class="social-proof">
-    <div class="proof-item">
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
       <div class="status-dot"></div>
-      <strong>Beta</strong>&nbsp; Open on Google Play
+      <strong>Live</strong>&nbsp;on Google Play
     </div>
-    <div class="proof-divider"></div>
-    <div class="proof-item">
-      <strong>Android</strong>&nbsp;&middot; More platforms coming
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">🌍</span>
+      <strong>16 Countries</strong>
     </div>
-    <div class="proof-divider"></div>
-    <div class="proof-item">
-      Built for&nbsp;<strong>Indian roads</strong>&nbsp;from day one
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">🏍️</span>
+      Built for <strong>two-wheelers</strong>
     </div>
-    <div class="proof-divider"></div>
-    <div class="proof-item">
-      <strong>Free</strong>&nbsp;during beta
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">🇮🇳</span>
+      Made for <strong>Indian roads</strong>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">✦</span>
+      <strong>Free</strong>&nbsp;to download
     </div>
   </div>
 
+  <!-- FEATURE PILLS -->
+  <div class="feature-pills fade-in">
+    <span class="pill"><span class="pill-dot"></span> Live group tracking</span>
+    <span class="pill"><span class="pill-dot"></span> Crash detection</span>
+    <span class="pill"><span class="pill-dot"></span> One-tap SOS</span>
+    <span class="pill"><span class="pill-dot"></span> Offline maps</span>
+    <span class="pill"><span class="pill-dot"></span> Glove-friendly HUD</span>
+    <span class="pill"><span class="pill-dot"></span> Multi-day trip planning</span>
+    <span class="pill"><span class="pill-dot"></span> Weather conditions</span>
+    <span class="pill"><span class="pill-dot"></span> Ride analytics</span>
+    <span class="pill"><span class="pill-dot"></span> Scenic routing</span>
+    <span class="pill"><span class="pill-dot"></span> Emergency contacts</span>
+  </div>
+
   <!-- PHILOSOPHY -->
-  <section class="section-philosophy">
-    <p class="overline">THE PHILOSOPHY</p>
+  <section class="section-philosophy fade-in">
+    <span class="overline">THE PHILOSOPHY</span>
     <h2 class="philosophy-headline">
       Most riding apps were built<br>
       for the commute. Not this one.
@@ -729,7 +726,7 @@
   </section>
 
   <!-- PULL QUOTE -->
-  <div class="pull-quote-section">
+  <div class="pull-quote-section fade-in">
     <div class="pull-quote">
       <blockquote>
         "The ride you <em>plan for weeks,</em> do with five brothers, and <em>talk about for years</em> &mdash; or the one you do alone at 5am because some roads deserve to be ridden."
@@ -737,7 +734,7 @@
     </div>
   </div>
 
-  <!-- WHAT YOU ACTUALLY FEEL -->
+  <!-- FEATURES -->
   <section class="section-experience">
     <div class="experience-inner">
       <span class="overline">WHAT IT FEELS LIKE</span>
@@ -747,118 +744,163 @@
 
       <div class="exp-grid">
 
-        <div class="exp-card">
-          <span class="exp-number">01</span>
+        <div class="exp-card fade-in">
+          <span class="exp-icon">📍</span>
           <h3>The whole pack, one map</h3>
-          <p>
-            Leave the group chat behind. Every rider's live position is on your screen the moment you start a group ride &mdash; no manual sharing, no waiting for location drops. <strong>You always know who's ahead and who's two turns back.</strong>
-          </p>
+          <p>Every rider's live position on your screen the moment a group ride starts &mdash; no manual sharing, no location drops. <strong>You always know who's ahead and who's two turns back.</strong> Host can see if someone falls behind.</p>
         </div>
 
-        <div class="exp-card">
-          <span class="exp-number">02</span>
+        <div class="exp-card fade-in">
+          <span class="exp-icon">⚡</span>
           <h3>A glance at 80. That's all it takes.</h3>
-          <p>
-            The HUD shows what you need: next turn, distance, your speed. Nothing else. <strong>No menus, no scrolling, no tapping while you're moving.</strong> When you need to signal the pack, one big glove-friendly tile does it.
-          </p>
+          <p>The HUD shows next turn, distance, speed. Nothing else. <strong>No menus, no scrolling, no tapping while moving.</strong> One large glove-friendly tile to signal the pack. Built for eyes that need to be on the road.</p>
         </div>
 
-        <div class="exp-card">
-          <span class="exp-number">03</span>
-          <h3>The safety net you forget is there</h3>
-          <p>
-            Crash detection is always on. If it fires, your GPS goes to your pack &mdash; or your emergency contacts if you're riding solo. Dead man's timer if you need it, one-tap SOS when you don't want to wait. <strong>You ride with confidence because the failsafe is silent until it isn't.</strong>
-          </p>
+        <div class="exp-card fade-in">
+          <span class="exp-icon">🆘</span>
+          <h3>The safety net that never sleeps</h3>
+          <p>Crash detection always on. If it fires, your GPS goes to your pack or emergency contacts. <strong>One-tap SOS. Cancel on finger lift.</strong> Dead man's timer if you need it. Silent until it needs to be loud.</p>
         </div>
 
-        <div class="exp-card">
-          <span class="exp-number">04</span>
-          <h3>The whole route, before you leave</h3>
-          <p>
-            Multi-day routes, custom waypoints, fuel stops. Build it once, share it with the pack &mdash; everyone rides the same line from the start. <strong>No more "where are we stopping?" over WhatsApp at 5am.</strong>
-          </p>
+        <div class="exp-card fade-in">
+          <span class="exp-icon">🗺️</span>
+          <h3>The whole route, offline</h3>
+          <p>Multi-day routes, waypoints, fuel stops. Build once, share with the pack. <strong>Download offline maps before you go &mdash; no signal means no problem.</strong> Scenic routing picks interesting roads over fastest path.</p>
         </div>
 
-        <div class="exp-card wide">
-          <span class="exp-number">05</span>
+        <div class="exp-card fade-in">
+          <span class="exp-icon">🌤️</span>
+          <h3>Know before you leave</h3>
+          <p>Live weather scored into a single ride rating &mdash; temperature, wind, rain. <strong>PRIME conditions flagged. Bad weather called out.</strong> So you know at home, not 40 km in.</p>
+        </div>
+
+        <div class="exp-card fade-in">
+          <span class="exp-icon">📊</span>
+          <h3>Every ride, remembered</h3>
+          <p>Distance, duration, top speed, route on a map. <strong>Your heatmap fills up over time</strong> &mdash; every road ridden, every route taken. Post-ride recap with mood selector and personal records.</p>
+        </div>
+
+        <div class="exp-card wide fade-in">
+          <span class="exp-icon">📡</span>
           <h3>Communication that works at 80 kmph</h3>
-          <p>
-            A dedicated comms overlay with large, glove-friendly tiles: STOP &middot; FUEL &middot; FOOD &middot; PHOTO &middot; WAIT. Tap once, your pack gets it instantly. <strong>No voice notes. No typing. No stopping.</strong> Just the signal you need, at the moment you need it.
-          </p>
+          <p>Glove-friendly comms overlay: <strong>STOP &middot; FUEL &middot; FOOD &middot; PHOTO &middot; WAIT.</strong> Tap once, your pack gets it instantly. No voice notes. No typing. No stopping. The signal you need, at the moment you need it.</p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR INDIA -->
+  <section class="section-india fade-in">
+    <div style="text-align:center;">
+      <span class="overline">BUILT FOR INDIA</span>
+      <h2 class="section-title" style="margin-bottom:0;">
+        Every decision made for<br><span class="dim">Indian roads and riders.</span>
+      </h2>
+    </div>
+    <div class="india-grid">
+      <div class="india-card">
+        <span class="india-card-icon">🛣️</span>
+        <h4>Two-wheeler routing</h4>
+        <p>Google Maps handoff uses two-wheeler mode, not car. Expressway warnings on first ride.</p>
+      </div>
+      <div class="india-card">
+        <span class="india-card-icon">📶</span>
+        <h4>Works without signal</h4>
+        <p>Offline map tiles pre-downloaded before the ride. Navigation keeps going when towers go quiet.</p>
+      </div>
+      <div class="india-card">
+        <span class="india-card-icon">🔋</span>
+        <h4>OEM battery handling</h4>
+        <p>Onboarding guides you through battery saver settings so GPS doesn't die mid-ride.</p>
+      </div>
+      <div class="india-card">
+        <span class="india-card-icon">📱</span>
+        <h4>Phone number login</h4>
+        <p>No email. No password. Sign in with your number and OTP. On the road in seconds.</p>
+      </div>
+      <div class="india-card">
+        <span class="india-card-icon">🧤</span>
+        <h4>Glove-first design</h4>
+        <p>Every tap target built for gloved hands at speed. No fine-motor precision needed.</p>
+      </div>
+      <div class="india-card">
+        <span class="india-card-icon">💸</span>
+        <h4>Free to ride</h4>
+        <p>No subscription. No paywalled safety features. Download and ride, no strings attached.</p>
       </div>
     </div>
   </section>
 
   <!-- WHO IT'S FOR -->
   <section class="section-riders">
-    <div class="riders-inner">
-      <p class="overline">WHO IT'S FOR</p>
+    <div class="riders-inner fade-in">
+      <span class="overline">WHO IT'S FOR</span>
       <h2 class="section-title">
         Built for riders who treat<br>
         <span class="dim">every ride like it counts.</span>
       </h2>
 
       <div class="rider-types">
-
         <div class="rider-row">
-          <div class="rider-index">01</div>
+          <div class="rider-emoji">🧭</div>
           <div class="rider-content">
             <h4>The solo tourer who rides into the unknown</h4>
-            <p>No pack doesn't mean no safety net. Your emergency contacts get your live GPS if something goes wrong. Dead man's timer, crash detection, one-tap SOS &mdash; the full suite works for one rider just as well as ten.</p>
+            <p>No pack doesn't mean no safety net. Emergency contacts get your live GPS if something goes wrong. Crash detection, dead man's timer, one-tap SOS &mdash; all working for one rider just as well as ten.</p>
           </div>
         </div>
 
         <div class="rider-row">
-          <div class="rider-index">02</div>
+          <div class="rider-emoji">👑</div>
           <div class="rider-content">
-            <h4>The pack leader who's tired of WhatsApp logistics</h4>
-            <p>You plan the route, you set the pace, you check on everyone. REVKIN gives you the tools to actually do that from the handlebar &mdash; not from a 47-message thread at midnight before the ride.</p>
+            <h4>The pack leader tired of WhatsApp logistics</h4>
+            <p>You plan the route, set the pace, check on everyone. REVKIN gives you the tools to do that from the handlebar &mdash; not from a 47-message thread at midnight before the ride.</p>
           </div>
         </div>
 
         <div class="rider-row">
-          <div class="rider-index">03</div>
+          <div class="rider-emoji">🔴</div>
           <div class="rider-content">
             <h4>The tail-end rider who always loses the pack</h4>
-            <p>You hit a red light, the pack doesn't notice, and suddenly you're navigating alone in an unfamiliar city. REVKIN means the host can see you've fallen behind &mdash; and the app can too.</p>
+            <p>You hit a red light, the pack doesn't notice, suddenly you're navigating alone. REVKIN means the host sees you've fallen behind &mdash; and the app does too.</p>
           </div>
         </div>
 
         <div class="rider-row">
-          <div class="rider-index">04</div>
+          <div class="rider-emoji">⚙️</div>
           <div class="rider-content">
-            <h4>The rider who wants their phone to just work</h4>
-            <p>Sign in with your phone number &mdash; no email, no password, no account setup friction. Open the app, start a ride, go. Your garage, your routes, your history, always there.</p>
+            <h4>The rider who just wants their phone to work</h4>
+            <p>Sign in with your number. Open the app. Start a ride. No account friction, no setup overhead. Your routes and history are always there when you need them.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- BETA CTA -->
+  <!-- CTA -->
   <section class="section-cta">
-    <div class="cta-inner">
+    <div class="cta-inner fade-in">
       <div class="cta-glow"></div>
-      <p class="overline">EARLY ACCESS</p>
+      <span class="overline">LIVE ON GOOGLE PLAY</span>
       <h2 class="cta-headline">
-        Get in early.<br>
-        Help us build the thing right.
+        Download free.<br>
+        Ride with confidence.
       </h2>
       <p class="cta-body">
-        REVKIN is live on Google Play. It's improving every week and shaped entirely by riders who actually use it &mdash; not by a product team guessing what you need. If you want a say in what gets built next, this is how.
+        REVKIN is live across 16 countries. Built for Indian two-wheelers, tuned for Indian roads. Solo or in a pack &mdash; quietly reliable, and loud only when it needs to be.
       </p>
       <div class="cta-actions">
-        <a class="btn-primary" href="https://play.google.com/apps/internaltest/4701671090989309816" target="_blank">
-          JOIN BETA ON GOOGLE PLAY
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.revkin.app&pli=1" target="_blank">
+          &#9654;&nbsp; DOWNLOAD ON GOOGLE PLAY
         </a>
         <a class="btn-whatsapp" href="https://chat.whatsapp.com/IYhINE7ffytINuzpOOqbUK" target="_blank">
           JOIN THE COMMUNITY
         </a>
       </div>
-      <p class="cta-note">Android only &middot; Free during beta &middot; No spam, ever &middot; <a href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;opacity:0.7;">Privacy Policy</a></p>
+      <p class="cta-note">
+        Android only &middot; Free to download &middot; 16 countries &middot; No spam, ever<br>
+        <a href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">Privacy Policy</a>
+      </p>
     </div>
   </section>
 
@@ -872,9 +914,16 @@
       <a class="privacy" href="https://ShivamHQ.github.io/revkin-site/privacy_policy.html">Privacy Policy</a>
       <a href="https://chat.whatsapp.com/IYhINE7ffytINuzpOOqbUK" target="_blank">Community</a>
       <a href="mailto:kumarshivam1993@gmail.com">Contact</a>
-      <a href="https://play.google.com/apps/internaltest/4701671090989309816" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=com.revkin.app&pli=1" target="_blank">Google Play</a>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
