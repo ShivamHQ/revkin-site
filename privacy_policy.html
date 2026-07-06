@@ -193,7 +193,7 @@ a:hover{ text-decoration:underline; }
       </div>
       <div class="meta-card">
         <span>Last Updated</span>
-        <strong>25 May 2026</strong>
+        <strong>5 July 2026</strong>
       </div>
       <div class="meta-card">
         <span>Operated By</span>
@@ -259,6 +259,18 @@ a:hover{ text-decoration:underline; }
     <div class="card">
       <h3>📲 Device Information</h3>
       <p>Device manufacturer and model — used in memory only to show OEM-specific battery optimisation instructions (e.g. Xiaomi vs Samsung). Not stored on any server.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛣️ Anonymized Road Data — Opt-In Only</h3>
+      <p>If — and only if — you turn on <strong>"Improve Indian road data"</strong> in Profile → Notifications, REVKIN derives anonymized summaries from your saved rides: approximate route cells (geohash areas roughly 1&nbsp;km across), grouped speed ranges within those cells, the calendar date (never the time), the ride type, and which fuel stations are selected during rides. This builds road-quality, hazard, and fuel-stop intelligence for Indian roads that improves routing, route guides, and warnings for every rider.</p>
+      <p style="margin-top:10px;">These records are stored in a separate collection under a random ID and contain <strong>no user ID, no account reference, no ride ID, no precise coordinates, and no timestamps</strong> — attribution to you is structurally impossible, not merely hidden.</p>
+      <p class="highlight" style="margin-top:12px;">Consent is OFF by default. You are asked once after a ride and can change your choice anytime in Profile. On revoke we stop deriving new records immediately; already-written records cannot be deleted per-user because they are not attributable to any user.</p>
+    </div>
+
+    <div class="card">
+      <h3>👨‍👩‍👧 Live Ride Share Pages</h3>
+      <p>When you share a live ride (feature rolling out; currently in testing), REVKIN creates a temporary web page at an unguessable link showing your first name/handle, latest position, and ride status — so family can follow your ride without installing the app. The page's data exists only while active and is automatically deleted after the ride (12-hour maximum). Only people you give the link to can view it; the link cannot be listed or searched.</p>
     </div>
   </section>
 
@@ -343,6 +355,14 @@ a:hover{ text-decoration:underline; }
         <tr>
           <td>Live ride telemetry (RTDB)</td>
           <td>Auto-deleted within 24 hours of ride end</td>
+        </tr>
+        <tr>
+          <td>Live ride share pages</td>
+          <td>Auto-deleted after ride end (12-hour maximum)</td>
+        </tr>
+        <tr>
+          <td>Anonymized road data (opt-in)</td>
+          <td>Retained indefinitely — contains nothing attributable to you</td>
         </tr>
         <tr>
           <td>Crash reports</td>
